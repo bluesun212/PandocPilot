@@ -1,0 +1,7 @@
+{
+  "name": "envirtracker",
+  "description": "Environment tracker",
+  "requires": ["core"],
+  "macro_files": ["envirtracker.tex"],
+  "code": "pandocpilot.plugins.builtin.EnvironmentTrackerPlugin"
+}

@@ -1,0 +1,5 @@
+{
+  "name": "core",
+  "description": "A set of core macros for use in other plugins",
+  "code": "pandocpilot.plugins.builtin.CorePlugin"
+}

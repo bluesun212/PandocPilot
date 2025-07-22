@@ -1,0 +1,6 @@
+{
+  "name": "citations",
+  "description": "Processes citations",
+  "requires": ["core"],
+  "code": "pandocpilot.plugins.builtin.CitationPlugin"
+}

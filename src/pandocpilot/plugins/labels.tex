@@ -1,0 +1,47 @@
+\newcommand{\@copy}[3][]{\ifdefined{#2}{\let#3#2}{%
+    \ifempty{#1}{\newcommand{#3}{\noexpand{#2}}}{\newcommand{#3}{\noexpand{#1}}}%
+}}
+
+% Set up new align and equation environments
+\@copy[\begin{align}]{\align}{\@oldalign}
+\@copy[\end{align}]{\endalign}{\@oldendalign}
+\@copy[\begin{equation}]{\equation}{\@oldequation}
+\@copy[\end{equation}]{\endequation}{\@oldendequation}
+
+\renewenvironment{align}{%
+    \renewcommand{\@needsnumber}{1}\@oldalign%
+}{\@tryinsert\@oldendalign}
+
+\renewenvironment{equation}{%
+    \renewcommand{\@needsnumber}{1}\@oldequation%
+}{\@tryinsert\@oldendequation}
+
+\newcommand{\@ifmathenv}[2]{\ifequal{\@currenvir}{align}{#1}{%
+    \ifequal{\@currenvir}{equation}{#1}{#2}}}
+
+\@copy{\\}{\@slash}
+\renewcommand{\\}[1][]{\@ifmathenv{\@tryinsert}{}%
+    \@slash\ifempty{#1}{}{[#1]}%
+}
+
+% Custom equation numbering behaviour
+\newcounter{eq}
+\newcommand{\@tryinsert}{\ifempty{\@needsnumber}{}{%
+    \stepcounter{eq}%
+    \ifempty{\@lastlabel}{\tag{\theeq}}{%
+        \htmlId{\@lastlabel}{\tag{\theeq}}%
+        \@savelabel{\@lastlabel}{\theeq}%
+        \renewcommand{\@lastlabel}{}%
+    }}%
+    \renewcommand{\@needsnumber}{1}%
+}
+
+% Modify label and nonumber commands
+\renewcommand{\label}[1]{\@ifmathenv{%
+    \renewcommand{\@lastlabel}{#1}%
+}{%
+    \@savelabel{#1}{\@wraptarget{#1}}%
+}}
+
+\@copy{\nonumber}{\@oldnonumber}
+\renewcommand{\nonumber}{\renewcommand{\@needsnumber}{}\@oldnonumber}

@@ -1,0 +1,2 @@
+\renewcommand{\begin}[1]{\@pushenvir{#1}\ifcsname{#1}{\csname{#1}}{\noexpand{\begin{#1}}}}
+\renewcommand{\end}[1]{\ifcsname{end#1}{\csname{end#1}}{\noexpand{\end{#1}}}\@popenvir}

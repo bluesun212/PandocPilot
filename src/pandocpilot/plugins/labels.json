@@ -1,0 +1,8 @@
+{
+  "name": "labels",
+  "description": "Equation numberer, label and reference linker",
+  "requires": ["core", "envirtracker"],
+  "macro_files": ["labels.tex"],
+  "code": "pandocpilot.plugins.builtin.LabelPlugin",
+  "data": {"math_envs":  ["equation", "align"]}
+}

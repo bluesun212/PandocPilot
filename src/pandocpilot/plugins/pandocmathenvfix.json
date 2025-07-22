@@ -1,0 +1,6 @@
+{
+  "name": "pandocmathenvfix",
+  "description": "Fixes strange behavior with Pandoc parsing certain math environments",
+  "requires": ["core"],
+  "macro_files": ["pandocmathenvfix.tex"]
+}

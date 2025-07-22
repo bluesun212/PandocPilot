@@ -1,0 +1,7 @@
+{
+  "name": "katexjson",
+  "description": "Renders math server-side with kateex-json-cli",
+  "code": "pandocpilot.plugins.builtin.KaTeXJSONPlugin",
+  "requires": ["core"],
+  "data": {"throwOnError":  false, "trust":  true, "strict":  false, "output":  "html"}
+}
